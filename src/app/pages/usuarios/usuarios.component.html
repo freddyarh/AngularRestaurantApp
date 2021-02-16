@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="text-center">
+    <h1>Usuarios</h1>
+
+  </div>
+  
+  <table class="table mt-3 animated fadeIn faster">
+  <!-- <table *ngIf="!cargando && heroes.length > 0" class="table mt-3 animated fadeIn faster"> -->
+      <thead class="table-dark">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Tools</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios; let i = index">
+          <th>{{i + 1}}</th>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.role }}</td>
+          <td>{{ usuario.estado }}</td>
+          <td>
+            <button class="btn btn-info mr-1">
+                      <i class="bi bi-pencil-square"></i>
+                  </button>
+                  <button class="btn btn-danger">
+                      <i class="bi bi-eraser"></i>
+                  </button>
+          </td>
+        </tr>
+          <!-- <tr *ngFor="let heroe of heroes; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ heroe.nombre }}</td>
+              <td>{{ heroe.poder }}</td>
+              <td>
+  
+                  <span *ngIf="heroe.vivo">Vivo</span>
+                  <span *ngIf="!heroe.vivo">Muerto</span>
+  
+              </td>
+              <td>
+  
+                  
+                  
+              </td>
+          </tr> -->
+      </tbody>
+  </table>
+</div>
