@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, map } from 'rxjs/operators';
+import { UsuarioModel } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,21 @@ export class UsuariosService {
 
         })
       );
+  }
+
+  getUsuario( id: string ){
+
+    return this.http.get(`${this.url}usuario/${id}`)
+      .pipe(
+        map((resp: any) => {
+
+          const usuarios: UsuarioModel[] = [resp.usuario];
+
+        if(resp.ok == 'false'){  return []; }
+
+        return usuarios;
+        })
+      )
+
   }
 }

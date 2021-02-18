@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <p>
+    usuario works!
+  </p>
+  <div class="row">
+    <div class="col-10">
+
+      <form action="">
+
+        <div class="form-group">
+          <label>Firebase ID</label>
+          <input type="text"
+          class="form-control"
+          placeholder="Firebase ID"
+          [(ngModel)]="usuario._id"
+          name="id"
+          disabled="disabled">
+          <small class="form-text text-muted">Este campo es autogenerado</small>
+        </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text"
+          class="form-control"
+          placeholder="nombre"
+          [(ngModel)]="usuario.nombre"
+          name="nombre"
+          required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text"
+          class="form-control"
+          placeholder="email"
+          [(ngModel)]="usuario.email"
+          name="email"
+          required>
+        </div>
+        <div class="form-group">
+          <label>Estado</label>
+          <input type="text"
+          class="form-control"
+          placeholder="Estado"
+          [(ngModel)]="usuario.estado"
+          name="estado"
+          required>
+        </div>
+
+      </form>
+      <hr>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary">Guardar</button>
+    </div>
+  </div>
+
+</div>
+
+
