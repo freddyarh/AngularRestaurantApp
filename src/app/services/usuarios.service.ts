@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, map } from 'rxjs/operators';
 import { UsuarioModel } from '../models/usuario.model';
@@ -39,6 +39,21 @@ export class UsuariosService {
         return usuarios;
         })
       )
+
+  }
+
+  actualizarUsuario(id:string, usuario: UsuarioModel ){
+
+    const params = JSON.stringify(usuario);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    console.log(usuario);
+    // return usuario;
+    return this.http.put(`${this.url}usuario/${id}`, params, {headers})
+      
+      .pipe( 
+        map( resp => resp )
+      );  
 
   }
 }
