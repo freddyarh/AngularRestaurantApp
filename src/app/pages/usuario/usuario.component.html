@@ -4,74 +4,68 @@
   <h2>Informacion del usuario</h2>
   <hr>
   <div class="row">
-    <div class ="col-4">
-      
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/usuarios/no-image.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <!-- <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="mb-3">
-        <input class="form-control form-control-sm" id="formFileSm" type="file">
-      </div>
-      
-
-    </div>
-    <div class="col-8">
-
+    <div class="col">
       <form (ngSubmit)="guardar( f )" #f="ngForm">
-
-        <div class="form-group">
-          <label>ID:</label>
-          <input type="text"
-          class="form-control"
-          placeholder="Firebase ID"
-          [(ngModel)]="usuario._id"
-          name="id"
-          disabled="disabled">
-          <small class="form-text text-muted">Este campo es autogenerado</small>
+        <div class ="col-4">
+          
+          <img src="{{ urlUserImg + usuario._id}}" class="imagen" alt="...">
+          
+          <div class="mb-3">
+            <label for="image">Imagen de perfil</label>
+            <input type="file" name="imagen" placeholder="img" (change)="cargarImagen($event)" />
+          </div>  
+          
         </div>
-        <div class="form-group">
-          <label>Nombre:</label>
-          <input type="text"
-          class="form-control"
-          placeholder="nombre"
-          [(ngModel)]="usuario.nombre"
-          name="nombre"
-          required>
+        <div class="col-8">
+        
+          <div class="form-group">
+            <label>ID:</label>
+            <input type="text"
+            class="form-control"
+            placeholder="Firebase ID"
+            [(ngModel)]="usuario._id"
+            name="id"
+            disabled="disabled">
+            <small class="form-text text-muted">Este campo es autogenerado</small>
+          </div>
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text"
+            class="form-control"
+            placeholder="nombre"
+            [(ngModel)]="usuario.nombre"
+            name="nombre"
+            required>
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="text"
+            class="form-control"
+            placeholder="email"
+            [(ngModel)]="usuario.email"
+            name="email"
+            required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Estado:</label>
+            <select class="form-control" name="estado" [(ngModel)]="usuario.estado">
+              <option>
+                true
+              </option>
+               <option>
+                 false
+               </option>
+            </select>
+          </div>
+          <hr>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="text"
-          class="form-control"
-          placeholder="email"
-          [(ngModel)]="usuario.email"
-          name="email"
-          required>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Estado:</label>
-          <select class="form-control" name="estado" [(ngModel)]="usuario.estado">
-            <option>
-              true
-            </option>
-             <option>
-               false
-             </option>
-          </select>
-        </div>
-        <hr>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
-
-      </form>
-      <hr>
+        </form>
     </div>
   </div>
+  <hr>
 
 </div>
 

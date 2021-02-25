@@ -415,6 +415,10 @@ iframe {
   opacity: 1;
 }
 
+img{
+  width: 120px;
+}
+
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;

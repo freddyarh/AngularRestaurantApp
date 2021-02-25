@@ -16,6 +16,8 @@ export class UsuarioComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
 
+  public urlUserImg = 'http://localhost:3000/uploads/usuarios/';
+
   constructor(private route: ActivatedRoute, private usuariosService: UsuariosService ) { }
 
   ngOnInit() {
@@ -29,6 +31,13 @@ export class UsuarioComponent implements OnInit {
         this.usuario = resp[0];
         
       });
+    this.usuariosService.getUsuarioImg(id)
+      .subscribe((resp: any) => {
+        console.log(resp);
+      },
+      error => {
+        // console.log(error.url);
+      })
   }
 
   guardar(form: NgForm ){
@@ -85,6 +94,11 @@ export class UsuarioComponent implements OnInit {
       });
     }
       
+  }
+
+  cargarImagen(fileInput: any){
+    console.log(fileInput);
+
   }
 
 }

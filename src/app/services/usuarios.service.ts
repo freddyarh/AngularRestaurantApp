@@ -42,6 +42,19 @@ export class UsuariosService {
 
   }
 
+  getUsuarioImg( id: string ){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.get(`${this.url}uploads/usuarios/${id}`, { headers })
+    .pipe(
+      map((resp: any) => {
+        // console.log(resp.error);
+        return resp;
+        ;
+      })
+    )
+  }
+
   actualizarUsuario(id:string, usuario: UsuarioModel ){
 
     const params = JSON.stringify(usuario);

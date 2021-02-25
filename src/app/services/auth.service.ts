@@ -162,7 +162,7 @@ export class AuthService {
     return this.http.get(this.url + 'usuario?desde=0&limite=5')
     .pipe(
         map( resp => {
-          console.log('Entro en el mapa de RXJS');
+          // console.log('Entro en el mapa de RXJS');
           // console.log(resp.token );
           
           return resp;
