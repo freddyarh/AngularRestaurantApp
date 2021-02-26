@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UploadService } from 'src/app/services/upload.service';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -17,8 +19,12 @@ export class UsuarioComponent implements OnInit {
   usuario: UsuarioModel = new UsuarioModel();
 
   public urlUserImg = 'http://localhost:3000/uploads/usuarios/';
+  public urlUsersImg = 'http://localhost:3000/upload/usuarios/';
 
-  constructor(private route: ActivatedRoute, private usuariosService: UsuariosService ) { }
+  public fileToUpload: Array<File>;
+
+  constructor(private route: ActivatedRoute, private usuariosService: UsuariosService, 
+              private uploadService: UploadService ) { }
 
   ngOnInit() {
 
@@ -84,8 +90,20 @@ export class UsuarioComponent implements OnInit {
 
         const id = this.route.snapshot.paramMap.get('id'); 
         this.usuariosService.actualizarUsuario(id, form.value)
-          .subscribe(resp => {
-                
+          .subscribe((resp:any) => {
+            
+            // Subir imagen
+
+            console.log(resp.usuarioDB._id);
+            
+            this.uploadService.fileRequest(`${this.urlUsersImg}`+ resp.usuarioDB._id, [], this.fileToUpload, 'archivo')
+              .then((resp) => {
+                console.log(resp);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+            
             Swal.fire({
               title: 'El usuario',
               text: 'Se actualizo correctamente',
@@ -97,7 +115,9 @@ export class UsuarioComponent implements OnInit {
   }
 
   cargarImagen(fileInput: any){
-    console.log(fileInput);
+    
+    this.fileToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.fileToUpload);
 
   }
 

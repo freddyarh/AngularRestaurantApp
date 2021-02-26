@@ -1,6 +1,7 @@
 
 
 export class UsuarioModel {
+
     id: string;
     role: string;
     estado: string;

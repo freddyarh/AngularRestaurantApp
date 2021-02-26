@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, map } from 'rxjs/operators';
 import { UsuarioModel } from '../models/usuario.model';
+import { global } from '../services/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  private url = 'http://localhost:3000/';
+  private url = global.url;
 
   constructor( private http: HttpClient ) { }
 
@@ -60,7 +61,7 @@ export class UsuariosService {
     const params = JSON.stringify(usuario);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    console.log(usuario);
+    // console.log(usuario);
     // return usuario;
     return this.http.put(`${this.url}usuario/${id}`, params, {headers})
       
