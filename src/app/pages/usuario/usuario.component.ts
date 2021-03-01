@@ -100,7 +100,7 @@ export class UsuarioComponent implements OnInit {
               .then((resp) => {
                 console.log(resp);
               })
-              .catch(err => {
+              .catch((err:any) => {
                 console.log(err);
               });
             
