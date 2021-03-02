@@ -22,6 +22,7 @@ export class UsuarioComponent implements OnInit {
   public urlUsersImg = 'http://localhost:3000/upload/usuarios/';
 
   public fileToUpload: Array<File>;
+  public extencion: boolean;
 
   constructor(private route: ActivatedRoute, private usuariosService: UsuariosService, 
               private uploadService: UploadService ) { }
@@ -101,6 +102,7 @@ export class UsuarioComponent implements OnInit {
                 console.log(resp);
               })
               .catch((err:any) => {
+                
                 console.log(err);
               });
             
@@ -116,8 +118,21 @@ export class UsuarioComponent implements OnInit {
 
   cargarImagen(fileInput: any){
     
-    this.fileToUpload = <Array<File>>fileInput.target.files;
-    console.log(this.fileToUpload);
+    this.fileToUpload = <Array<File>>fileInput.target.files[0].name;
+    let fileExt = this.fileToUpload;
+    let fileExt2 = fileExt.toString();
+    let fileExt3 = fileExt2.split(".");
+    let [nombre, extesion] = fileExt3;
+
+    let extencionesPermitidas = ['png', 'jpg', 'gif', 'jpeg'];
+
+    if (extencionesPermitidas.indexOf(extesion) < 0){
+      this.extencion = true;
+    }else{
+      this.extencion = false;
+      console.log('Si se encontro');
+    }
+
 
   }
 
