@@ -87,7 +87,7 @@ export class AuthService {
 
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(resp['token']);
-          console.log('Esta es la descodificacion');
+          // console.log('Esta es la descodificacion');
           console.log(decodedToken);
           
           return resp;

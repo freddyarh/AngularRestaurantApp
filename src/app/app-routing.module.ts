@@ -6,6 +6,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login'   , component: LoginComponent },
   { path: 'usuarios'   , component: UsuariosComponent },
   { path: 'usuario/:id'   , component: UsuarioComponent },
+  { path: 'categorias'   , component: CategoriasComponent },
   { path: '**', redirectTo: 'registro' }
 ];
 
