@@ -81,14 +81,13 @@ export class AuthService {
     return this.http.post(this.url + 'usuario', params, {headers})
     .pipe(
         map( resp => {
-          console.log('Entro en el mapa de RXJS');
-          // console.log(resp.token );
+          
           this.guardarToken( resp['token'] );
 
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(resp['token']);
-          console.log('Esta es la descodificacion');
-          console.log(decodedToken);
+          // console.log('Esta es la descodificacion');
+          // console.log(decodedToken);
           
           return resp;
         })

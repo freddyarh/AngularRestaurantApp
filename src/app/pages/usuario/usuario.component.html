@@ -8,13 +8,13 @@
       <form (ngSubmit)="guardar( f )" #f="ngForm">
         <div class ="col-4">
           
-          <img src="{{ urlUserImg + usuario._id}}" class="imagen" alt="...">
+          <img src="{{ urlUserImg + usuario.uid}}" class="imagen" alt="...">
           
           <div class="mb-3">
             <label for="image">Imagen de perfil</label>
             <input type="file" name="imagen" placeholder="img" (change)="cargarImagen($event)" />
           </div>
-          <span *ngIf="extencion"><small class="form-text text-muted">El tipo de imagen es incorrecto</small></span>  
+          <span *ngIf="extencion"><small class="form-text text-muted">El tipo de imagen es incorrecta</small></span>  
           
         </div>
         <div class="col-8">
@@ -24,7 +24,7 @@
             <input type="text"
             class="form-control"
             placeholder="Firebase ID"
-            [(ngModel)]="usuario._id"
+            [(ngModel)]="usuario.uid"
             name="id"
             disabled="disabled">
             <small class="form-text text-muted">Este campo es autogenerado</small>

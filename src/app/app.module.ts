@@ -8,12 +8,14 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { CategoriaTarjetaComponent } from './pages/categoria-tarjeta/categoria-tarjeta.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
     LoginComponent,
     NavbarComponent,
     UsuariosComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    CategoriasComponent,
+    CategoriaTarjetaComponent
   ],
   imports: [
     BrowserModule,

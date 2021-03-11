@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     this.nombre = localStorage.getItem('nombre');
     
     this.auth.getUsuarios().subscribe(resp => {
-      console.log(resp);
+      // console.log(resp);
     });
   }
   

@@ -13,7 +13,7 @@ export class AuthGuard {
   canActivate(): boolean {
 
     // console.log('Guard');
-    console.log(this.auth.estaAutenticado());
+    // console.log(this.auth.estaAutenticado());
 
     if ( this.auth.estaAutenticado() ) {
 

@@ -47,27 +47,26 @@ export class LoginComponent implements OnInit {
       .subscribe(resp => {
         
         Swal.close();
+        const { nombre } = resp['usuario'];
         
         if(this.recuerdame){
           localStorage.setItem('email', this.usuario.email);
         }
         
-        localStorage.setItem('nombre', resp['usuarioBD'].nombre);
+        localStorage.setItem('nombre', nombre);
         
         this.router.navigateByUrl('/home');
 
       }, (err) => {
-        console.log(err.error.err.message);
+        // console.log(err);
 
         Swal.fire({
           icon: 'error',
           title: 'Error de autenticacion',
-          text: err.error.err.message
+          text: err.error.msg
         });
 
       });
-    // console.log(this.usuario);
-    // console.log(form);
 
 
   }
