@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from 'src/app/services/categorias.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -11,13 +12,21 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class CategoriasComponent implements OnInit {
 
-  constructor( private categoriasService: CategoriasService ) { }
+  private token: string;
+  private categorias: object;
+
+  constructor( private categoriasService: CategoriasService, private authService: AuthService ) { }
 
   ngOnInit() {
+    this.categoriasService.getCategorias()
+      .subscribe((data:any) => {
+
+        this.categorias = data.categorias;
+        console.log(this.categorias);
+      });
   }
 
   crearCategoria(){
-    console.log('Categoria creada');
 
     Swal.fire({
       title: 'Nombre de la categoria',
@@ -34,8 +43,12 @@ export class CategoriasComponent implements OnInit {
           nombre: login
         }
         // console.log(leter);
-        this.categoriasService.setCategoria(objCategoria)
-            .subscribe(data => console.log(data))
+        const token = this.authService.userToken;
+
+        this.categoriasService.setCategoria(objCategoria, token )
+            .subscribe(data => {
+              this.ngOnInit();
+            });
 
         // // return fetch(`//api.github.com/users/${login}`)
         //   .then(response => {

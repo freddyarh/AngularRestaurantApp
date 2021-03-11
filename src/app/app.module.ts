@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { CategoriaTarjetaComponent } from './pages/categoria-tarjeta/categoria-tarjeta.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
     NavbarComponent,
     UsuariosComponent,
     UsuarioComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    CategoriaTarjetaComponent
   ],
   imports: [
     BrowserModule,

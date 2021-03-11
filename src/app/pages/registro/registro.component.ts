@@ -49,7 +49,7 @@ export class RegistroComponent implements OnInit {
         localStorage.setItem('email', this.usuario.email);
       }
 
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/login');
     }, (err) => {
       console.log(err);
       console.log(err.error.err.errors.email.message);

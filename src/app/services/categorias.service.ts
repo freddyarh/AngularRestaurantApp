@@ -9,20 +9,20 @@ import { map } from 'rxjs/operators';
 })
 export class CategoriasService {
 
-  public t: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJlc3RhZG8iOnRydWUsImdvb2dsZSI6ZmFsc2UsIm5vbWJyZSI6InRlc3QzIiwiZW1haWwiOiJ0ZXN0M0BnbWFpbC5jb20iLCJ1aWQiOiI2MDQ5MmU5ODdlMWE4ODMyYzgxMzI3OTEifSwiaWF0IjoxNjE1NDA4ODMxLCJleHAiOjE2MTgwMDA4MzF9.vneuDUiNZ3kT40txXwM4JyYeMLr4HG7_G3hnEYxQFUE";
+  // public t: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJlc3RhZG8iOnRydWUsImdvb2dsZSI6ZmFsc2UsIm5vbWJyZSI6InRlc3QzIiwiZW1haWwiOiJ0ZXN0M0BnbWFpbC5jb20iLCJ1aWQiOiI2MDQ5MmU5ODdlMWE4ODMyYzgxMzI3OTEifSwiaWF0IjoxNjE1NDA4ODMxLCJleHAiOjE2MTgwMDA4MzF9.vneuDUiNZ3kT40txXwM4JyYeMLr4HG7_G3hnEYxQFUE";
   
   private url = global.url;
 
   constructor( private http: HttpClient ) {}
 
-  setCategoria(categoria:any) {
+  setCategoria(categoria:any, token: string) {
 
     const params = JSON.stringify(categoria);
     // const headers = new HttpHeaders().set('Content-Type', 'application/json' + this.t);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'x-token': this.t
+        'x-token': token
       })
     };
 
@@ -30,5 +30,16 @@ export class CategoriasService {
       .pipe(
         map(response => console.log(response))
       );
+  }
+
+  getCategorias(){
+
+    return this.http.get(this.url + 'categorias')
+      .pipe(
+        map(data => { 
+            return data;
+          })
+      );
+
   }
 }
