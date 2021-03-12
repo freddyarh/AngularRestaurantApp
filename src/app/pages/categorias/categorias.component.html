@@ -1,12 +1,18 @@
 <app-navbar></app-navbar>
 <div class="container">
+  
+  <h1>Categoria <small>comidas tipicas</small></h1>
+  <hr>
   <div class="m-3 d-grid gap-2 d-md-flex justify-content-md-end">
     <button class="btn btn-primary" (click)="crearCategoria()">Crear categoria</button>
+  </div>  
+  
+  <div class="card-columns">
+  
+  <!-- *ngFor="let heroe of heroes; let i = index" -->
+    <app-categoria-tarjeta (categoriaSeleccionada)="verCategoria($event)" [categoria]="catego" [index]="i" *ngFor="let catego of categorias; let i = index"></app-categoria-tarjeta>
+  
+  
   </div>
-  <!-- <div class="card animated fadeIn fast" > -->
-     <ul *ngFor="let categoria of categorias; let i = index">
-       <li>{{ categoria.nombre }}</li>
-     </ul>
-  <!-- </div> -->
 
 </div>

@@ -75,4 +75,17 @@ export class CategoriasComponent implements OnInit {
     })
   }
 
+  getCategorias() {
+
+    this.categoriasService.getCategorias()
+      .subscribe(res => {
+        this.categorias = res;
+        console.log(res);
+      });
+  }
+
+  verCategoria(evento: number) {
+    console.log('este es el evento', evento);
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-categoria-tarjeta',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaTarjetaComponent implements OnInit {
 
-  constructor() { }
+  @Input() categoria: any = {};
+  @Input() index: number;
+
+  @Output() categoriaSeleccionada: EventEmitter<number>;
+
+  constructor() { 
+    this.categoriaSeleccionada = new EventEmitter();
+  }
 
   ngOnInit() {
   }
