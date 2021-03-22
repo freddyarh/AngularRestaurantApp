@@ -88,4 +88,9 @@ export class CategoriasComponent implements OnInit {
     console.log('este es el evento', evento);
   }
 
+  crearProducto(){
+
+    console.log('nuevo');
+  }
+
 }

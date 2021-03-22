@@ -16,6 +16,9 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { CategoriaTarjetaComponent } from './pages/categoria-tarjeta/categoria-tarjeta.component';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ProductoTarjetaComponent } from './pages/producto-tarjeta/producto-tarjeta.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { CategoriaTarjetaComponent } from './pages/categoria-tarjeta/categoria-t
     UsuariosComponent,
     UsuarioComponent,
     CategoriasComponent,
-    CategoriaTarjetaComponent
+    CategoriaTarjetaComponent,
+    ProductosComponent,
+    ProductoComponent,
+    ProductoTarjetaComponent
   ],
   imports: [
     BrowserModule,

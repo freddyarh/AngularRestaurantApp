@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <h2>Productos <small>{{ categoria }}</small></h2>
+
+  <div class="card-columns">
+  
+    <!-- *ngFor="let heroe of heroes; let i = index" -->
+      <app-producto-tarjeta [producto]="produc" [index]="i" *ngFor="let produc of productos; let i = index"></app-producto-tarjeta>
+    
+    
+    </div>
+</div>
+

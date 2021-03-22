@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'usuarios'   , component: UsuariosComponent },
   { path: 'usuario/:id'   , component: UsuarioComponent },
   { path: 'categorias'   , component: CategoriasComponent },
+  { path: 'producto'   , component: ProductoComponent },
+  { path: 'productos/:id'   , component: ProductosComponent },
   { path: '**', redirectTo: 'registro' }
 ];
 

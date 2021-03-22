@@ -1,14 +1,13 @@
-
 <div class="card animated fadeIn fast" >
   <img class="card-img-top img-fluid" src="./assets/images/usuarios/no-image.jpg">
   <div class="card-body">
-    <h4 class="card-title">{{ categoria.nombre }}</h4>
+    <!-- <h4 class="card-title">nombre</h4> -->
+    <h4 class="card-title">{{ producto.nombre }}</h4>
     <p class="card-text"> Descripcion de categoria </p>
     <p class="card-text"><small class="text-muted">Clasificacion</small></p>
 
-    <button [routerLink]="['/productos', categoria._id]"
-      type="button" class="btn btn-outline-primary btn-block">
-      Ver productos ...
+    <button type="button" class="btn btn-outline-primary btn-block">
+      Comprar
     </button>
   </div>
 </div>
