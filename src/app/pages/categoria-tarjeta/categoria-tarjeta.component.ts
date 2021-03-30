@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { global } from 'src/app/services/global';
 
 @Component({
   selector: 'app-categoria-tarjeta',
@@ -7,16 +8,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CategoriaTarjetaComponent implements OnInit {
 
+  public urlUploadImg = global.urlUploadImg;
+
   @Input() categoria: any = {};
   @Input() index: number;
 
   @Output() categoriaSeleccionada: EventEmitter<number>;
 
   constructor() { 
-    this.categoriaSeleccionada = new EventEmitter();
+    // console.log('categoria', this.categoria);
+    this.categoriaSeleccionada = new EventEmitter();    
   }
 
   ngOnInit() {
+    // console.log(this.categoria);
+    // this.categorias = this.categoria;
   }
 
 }

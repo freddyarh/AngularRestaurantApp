@@ -18,10 +18,11 @@ export class UsuarioComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
 
-  public urlUserImg = 'http://localhost:3000/uploads/usuarios/';
-  public urlUsersImg = 'http://localhost:3000/upload/usuarios/';
+  // public urlUserImg = 'http://localhost:3000/upload/usuarios/';
+  public urlUsersImg = 'http://localhost:3000/uploads/usuarios/';
 
   public fileToUpload: Array<File>;
+  public fileToUpload2: Array<File>;
   public extencion: boolean;
 
   constructor(private route: ActivatedRoute, private usuariosService: UsuariosService, 
@@ -34,13 +35,12 @@ export class UsuarioComponent implements OnInit {
     this.usuariosService.getUsuario(id)
       .subscribe((resp: any) => {
         
-        // console.log(resp[0]);
         this.usuario = resp[0];
         
       });
     this.usuariosService.getUsuarioImg(id)
       .subscribe((resp: any) => {
-        console.log(resp);
+        // console.log(resp);
       },
       error => {
         // console.log(error.url);
@@ -50,8 +50,6 @@ export class UsuarioComponent implements OnInit {
   guardar(form: NgForm ){
 
     if( form.invalid ){
-      // const id = this.route.snapshot.paramMap.get('id'); 
-      console.log('Invalido');
       return;
     }
 
@@ -67,13 +65,10 @@ export class UsuarioComponent implements OnInit {
   
       if( resp.value ){
   
-          // this.heroes.splice(i, 1);
-          // this.heroesService.borrarHeroe( heroe.id ).subscribe();
-          console.log(form);
           const id = this.route.snapshot.paramMap.get('id'); 
           this.usuariosService.actualizarUsuario(id, form.value)
             .subscribe(resp => {
-              console.log(resp);
+              // console.log(resp);
             });
         
           }
@@ -94,16 +89,14 @@ export class UsuarioComponent implements OnInit {
           .subscribe((resp:any) => {
             
             // Subir imagen
-
-            console.log(resp.usuarioDB._id);
             
-            this.uploadService.fileRequest(`${this.urlUsersImg}`+ resp.usuarioDB._id, [], this.fileToUpload, 'archivo')
+            this.uploadService.fileRequest(`${this.urlUsersImg}${resp.usuarioDB.uid}`, [], this.fileToUpload, 'archivo')
               .then((resp) => {
                 console.log(resp);
               })
               .catch((err:any) => {
                 
-                console.log(err);
+                console.log('Error1', err);
               });
             
             Swal.fire({
@@ -117,9 +110,12 @@ export class UsuarioComponent implements OnInit {
   }
 
   cargarImagen(fileInput: any){
+
+    console.log(fileInput);
     
-    this.fileToUpload = <Array<File>>fileInput.target.files[0].name;
-    let fileExt = this.fileToUpload;
+    this.fileToUpload = <Array<File>>fileInput.target.files;
+    this.fileToUpload2 = <Array<File>>fileInput.target.files[0].name;
+    let fileExt = this.fileToUpload2;
     let fileExt2 = fileExt.toString();
     let fileExt3 = fileExt2.split(".");
     let [nombre, extesion] = fileExt3;
@@ -130,7 +126,6 @@ export class UsuarioComponent implements OnInit {
       this.extencion = true;
     }else{
       this.extencion = false;
-      console.log('Si se encontro');
     }
 
 

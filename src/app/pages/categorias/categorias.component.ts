@@ -13,7 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class CategoriasComponent implements OnInit {
 
   private token: string;
-  private categorias: object;
+  public categorias: object;
 
   constructor( private categoriasService: CategoriasService, private authService: AuthService ) { }
 
@@ -22,7 +22,7 @@ export class CategoriasComponent implements OnInit {
       .subscribe((data:any) => {
 
         this.categorias = data.categorias;
-        console.log(this.categorias);
+        console.log('categorias', this.categorias);
       });
   }
 
