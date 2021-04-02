@@ -1,7 +1,30 @@
-
 <div class="card animated fadeIn fast" >
-  <!-- <img class="card-img-top img-fluid" src="./assets/images/usuarios/no-image.jpg"> -->
-  <img class="card-img-top img-fluid" src="{{ urlUploadImg + 'categorias/' + categoria._id}}">
+
+  <!-- <img class="card-img-top img-fluid" src="{{ urlUploadImg + 'categorias/' + categoria._id}}"> -->
+
+  <!-- Slider main container -->
+  <div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div *ngFor="let product of slideImg" class="swiper-slide" [ngStyle]="{
+        'background-size' : 'cover',
+        'background-image': 'url('+urlUploadImg+'productos/'+product._id+')'
+         }">
+      </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+
+
   <div class="card-body">
     <h4 class="card-title">{{ categoria.nombre }}</h4>
     <p class="card-text"> Descripcion de categoria </p>

@@ -19,6 +19,7 @@ import { CategoriaTarjetaComponent } from './pages/categoria-tarjeta/categoria-t
 import { ProductosComponent } from './pages/productos/productos.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { ProductoTarjetaComponent } from './pages/producto-tarjeta/producto-tarjeta.component';
+import { SlideCategoriaComponent } from './pages/slide-categoria/slide-categoria.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductoTarjetaComponent } from './pages/producto-tarjeta/producto-tarj
     CategoriaTarjetaComponent,
     ProductosComponent,
     ProductoComponent,
-    ProductoTarjetaComponent
+    ProductoTarjetaComponent,
+    SlideCategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class ProductosComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
 
-    console.log(id);
+    // console.log(id);
 
     const token = this.authService.userToken;
 
