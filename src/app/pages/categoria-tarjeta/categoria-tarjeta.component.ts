@@ -16,6 +16,8 @@ export class CategoriaTarjetaComponent implements OnInit, AfterViewInit {
 
   public urlUploadImg = global.urlUploadImg;
   public slideImg : Array<any> = [];
+
+  public mySwiper: Swiper;
   // public valores;
 
   @Input() categoria: any = {};
@@ -29,25 +31,12 @@ export class CategoriaTarjetaComponent implements OnInit, AfterViewInit {
     this.categoriaSeleccionada = new EventEmitter();    
   }
   ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper-container', {
+    this.mySwiper = new Swiper('.swiper-container', {
       // Optional parameters
-      // loop: true,
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      loop: true
     
     });
+
   }
 
   ngOnInit() {
@@ -75,7 +64,14 @@ export class CategoriaTarjetaComponent implements OnInit, AfterViewInit {
     
     })
 
-   
+  }
+
+  onSlideNext(){
+    this.mySwiper.slideNext();
+  }
+
+  onSlidePrev(){
+    this.mySwiper.slidePrev();
   }
 
 }

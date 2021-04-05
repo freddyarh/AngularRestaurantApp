@@ -1,30 +1,79 @@
 <div class="container">
 
-  <h2>Producto a crear</h2>
+  <div class="row mb-3 mt-3">
+    <div class="col-12">
 
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre del producto">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <h2>Producto a crear</h2>
+
     </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Precio</label>
-      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio del producto">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Categoria del producto</label>
-            <select class="form-control" name="estado">
-              <option>
-                true
-              </option>
-               <option>
-                 false
-               </option>
-            </select>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+  </div>
+
+  <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+
+    <div>
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Nombre</label>
+        <div class="col-8">
+
+          <input type="text" 
+                 class="form-control" 
+                 id="exampleInputEmail1" 
+                 aria-describedby="emailHelp" 
+                 placeholder="Nombre del producto" 
+                 formControlName="nombre"
+                 [class.is-invalid]="forma.get('nombre').invalid && forma.get('nombre').touched">
+
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Precio</label>
+        <div class="col-8">
+
+          
+          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio del producto" formControlName="precio">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Categoria del producto</label>
+        <div class="col-8">
+          
+          <select class="form-control" name="estado" formControlName="categoria">
+            <option *ngFor="let categoria of categoriasArray">
+              {{ categoria.nombre }}
+            </option>
+          </select>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+          <button type="submit" class="btn btn-outline-primary btn-block">
+            Guardar
+          </button>
+        </div>
+      </div>
     </div>
   </form>
 </div>
+
+<hr>
+
+<pre>
+  Estado del formulario: {{ forma.valid }}
+  <br>
+  Status: {{ forma.status }}
+</pre>
+
+<pre>
+
+  {{ forma.value | json }}
+
+</pre>
 

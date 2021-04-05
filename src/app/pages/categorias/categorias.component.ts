@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-categorias',
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class CategoriasComponent implements OnInit {
 
   private token: string;
+
   public categorias: object;
 
   constructor( private categoriasService: CategoriasService, private authService: AuthService ) { }
