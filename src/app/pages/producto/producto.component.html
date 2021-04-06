@@ -12,6 +12,16 @@
   <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
 
     <div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Imagen del producto</label>
+        <div class="col-8">
+
+          <input #file type="file" accept="image/*" class="form-control-file" formControlName="imagen" (change)="preview(file.files)" />
+          <br>
+          <img [src]="imgURL" height="100" *ngIf="imgURL">
+
+        </div>
+      </div>
 
       <div class="form-group row">
         <label class="col-2 col-form-label">Nombre</label>
