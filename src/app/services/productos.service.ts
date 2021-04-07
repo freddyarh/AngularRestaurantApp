@@ -13,6 +13,25 @@ export class ProductosService {
 
   constructor( private http: HttpClient) {}
 
+  crearProductos(producto: any, token: string){
+
+    const params = JSON.stringify(producto);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'x-token': token
+      })
+    };
+
+    return this.http.post( `${this.url}producto`, params, httpOptions)
+        .pipe(
+          map(res => {
+            return res;
+          })
+        );
+  }
+
   categoriaProductos( id:string, token: string ){
 
     const httpOptions = {

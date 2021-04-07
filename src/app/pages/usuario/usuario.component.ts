@@ -96,7 +96,7 @@ export class UsuarioComponent implements OnInit {
               })
               .catch((err:any) => {
                 
-                console.log('Error1', err);
+                console.log('Error', err);
               });
             
             Swal.fire({

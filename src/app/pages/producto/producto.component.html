@@ -16,10 +16,17 @@
         <label class="col-2 col-form-label">Imagen del producto</label>
         <div class="col-8">
 
-          <input #file type="file" accept="image/*" class="form-control-file" formControlName="imagen" (change)="preview(file.files)" />
-          <br>
+          <input #file type="file" 
+                 accept="image/*" 
+                 class="form-control-file" 
+                 formControlName="imagen" 
+                 (change)="preview(file.files)" 
+                 [class.is-invalid]="imgProductoNoValido">
+          
+          <small *ngIf="imgProductoNoValido" id="emailHelp" class="form-text text-danger">Por favor seleccione una imagen.</small>
+          <!-- <br *ngIf="!imgProductoNoValido"> -->
           <img [src]="imgURL" height="100" *ngIf="imgURL">
-
+          
         </div>
       </div>
 
@@ -33,9 +40,9 @@
                  aria-describedby="emailHelp" 
                  placeholder="Nombre del producto" 
                  formControlName="nombre"
-                 [class.is-invalid]="forma.get('nombre').invalid && forma.get('nombre').touched">
+                 [class.is-invalid]="nombreNoValido">
 
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small *ngIf="nombreNoValido" id="emailHelp" class="form-text text-danger">Por favor escriba el nombre del producto</small>
 
         </div>
       </div>
@@ -44,8 +51,15 @@
         <div class="col-8">
 
           
-          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio del producto" formControlName="precio">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <input type="number" 
+                 class="form-control" 
+                 id="exampleInputEmail1" 
+                 aria-describedby="emailHelp" 
+                 placeholder="Precio del producto" 
+                 formControlName="precio"
+                 [class.is-invalid]="precioNoValido">
+
+          <small *ngIf="precioNoValido" id="emailHelp" class="form-text text-danger">Por favor escriba el valor del producto.</small>
 
         </div>
       </div>
@@ -53,11 +67,17 @@
         <label class="col-2 col-form-label">Categoria del producto</label>
         <div class="col-8">
           
-          <select class="form-control" name="estado" formControlName="categoria">
-            <option *ngFor="let categoria of categoriasArray">
+          <select class="form-control" 
+                  name="estado" 
+                  formControlName="categoria" 
+                  [class.is-invalid]="categoriaNoValido">
+
+            <option *ngFor="let categoria of categoriasArray" [value]="categoria._id">
               {{ categoria.nombre }}
             </option>
           </select>
+
+          <small *ngIf="categoriaNoValido" id="emailHelp" class="form-text text-danger">Por favor selecione la categoria del producto.</small>
 
         </div>
       </div>
