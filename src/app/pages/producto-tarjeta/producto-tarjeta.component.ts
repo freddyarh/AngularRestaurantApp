@@ -9,6 +9,8 @@ import { global } from 'src/app/services/global';
 })
 export class ProductoTarjetaComponent implements OnInit {
 
+  public numProducto : number = 0;
+
   public urlUploadImg = global.urlUploadImg;
 
   @Input() producto: any = {};
@@ -18,6 +20,15 @@ export class ProductoTarjetaComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.producto);
+  }
+
+   cantidad(valor:boolean){
+    if(valor){
+      this.numProducto += 1;
+    }
+    if( !valor && this.numProducto != 0 ){
+      this.numProducto -= 1;
+    }
   }
 
 }
