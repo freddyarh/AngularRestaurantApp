@@ -17,7 +17,7 @@ export class ProductoTarjetaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.producto);
+    // console.log(this.producto);
   }
 
 }

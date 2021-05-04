@@ -20,6 +20,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { ProductoTarjetaComponent } from './pages/producto-tarjeta/producto-tarjeta.component';
 import { SlideCategoriaComponent } from './pages/slide-categoria/slide-categoria.component';
+import { CarritoComponent } from './shared/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SlideCategoriaComponent } from './pages/slide-categoria/slide-categoria
     ProductosComponent,
     ProductoComponent,
     ProductoTarjetaComponent,
-    SlideCategoriaComponent
+    SlideCategoriaComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

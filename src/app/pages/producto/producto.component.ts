@@ -7,6 +7,8 @@ import { global } from 'src/app/services/global';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductosService } from 'src/app/services/productos.service';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -60,6 +62,9 @@ export class ProductoComponent implements OnInit {
   get nombreNoValido(){
     return this.forma.get('nombre').invalid && this.forma.get('nombre').touched
   }
+  get descripcionNoValido(){
+    return this.forma.get('descripcion').invalid && this.forma.get('descripcion').touched
+  }
   get precioNoValido(){
     return this.forma.get('precio').invalid && this.forma.get('precio').touched
   }
@@ -70,16 +75,17 @@ export class ProductoComponent implements OnInit {
   crearFormulario(){
 
     this.forma = this.fb.group({
-      imagen:    ['', Validators.required],
-      nombre:    ['', Validators.required],
-      precio:    ['', Validators.required],
-      categoria: ['', Validators.required]
+      imagen:         ['', Validators.required],
+      nombre:         ['', Validators.required],
+      descripcion:    ['', Validators.required],
+      precio:         ['', Validators.required],
+      categoria:      ['', Validators.required]
     });
 
   }
 
   guardar(){
-    console.log(this.forma);
+    // console.log(this.forma);
 
     if ( this.forma.invalid ) {
 
@@ -98,6 +104,15 @@ export class ProductoComponent implements OnInit {
       this.uploadService.fileRequest(`${this.urlUsersImg}productos/${data._id}`, [], this.fileToUpload, 'archivo')
         .then((resp) => {
           console.log(resp);
+          this.forma.reset();
+          this.imgURL = null;
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tu producto ha sido guardado',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch((err:any) => {
           
