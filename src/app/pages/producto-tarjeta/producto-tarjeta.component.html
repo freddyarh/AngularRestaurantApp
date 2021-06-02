@@ -14,7 +14,7 @@
         <button class="btn btn-outline-secondary" (click)="cantidad(false)"><i class="bi bi-bag-dash"></i></button>
     </div>
 
-    <button type="button" class="btn btn-outline-primary btn-block" [disabled]="numProducto == 0">
+    <button type="button" class="btn btn-outline-primary btn-block" [disabled]="numProducto == 0" (click)="agregarCarro(producto._id)">
       Agregar al carro
     </button>
   </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
+import { CarritoService } from '../../services/carrito.service';
+import { NavbarComponent } from '../../shared/navbar/navbar.component'
+
 import { global } from 'src/app/services/global';
 
 @Component({
@@ -10,16 +13,17 @@ import { global } from 'src/app/services/global';
 export class ProductoTarjetaComponent implements OnInit {
 
   public numProducto : number = 0;
+  // public productoArr : string[] = [];
 
   public urlUploadImg = global.urlUploadImg;
 
   @Input() producto: any = {};
   @Input() index: number;
 
-  constructor() { }
+  constructor( private carritoService: CarritoService ) { }
 
   ngOnInit() {
-    // console.log(this.producto);
+    // console.log(this.productoArr.length);
   }
 
    cantidad(valor:boolean){
@@ -29,6 +33,13 @@ export class ProductoTarjetaComponent implements OnInit {
     if( !valor && this.numProducto != 0 ){
       this.numProducto -= 1;
     }
+  }
+
+  agregarCarro(producto : string){
+
+    this.carritoService.cargarCarrito(producto);
+    this.numProducto = 0;
+
   }
 
 }

@@ -24,10 +24,6 @@ export class SlideCategoriaComponent implements OnInit, AfterViewInit {
       });
     
     }, 1000);
-  
-
-    
-   
   }
 
   ngOnInit() {

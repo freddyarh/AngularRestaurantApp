@@ -21,6 +21,7 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { ProductoTarjetaComponent } from './pages/producto-tarjeta/producto-tarjeta.component';
 import { SlideCategoriaComponent } from './pages/slide-categoria/slide-categoria.component';
 import { CarritoComponent } from './shared/carrito/carrito.component';
+import { PruebaComponent } from './models/prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CarritoComponent } from './shared/carrito/carrito.component';
     ProductoComponent,
     ProductoTarjetaComponent,
     SlideCategoriaComponent,
-    CarritoComponent
+    CarritoComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,

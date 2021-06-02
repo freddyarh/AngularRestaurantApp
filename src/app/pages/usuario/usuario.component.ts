@@ -92,11 +92,11 @@ export class UsuarioComponent implements OnInit {
             
             this.uploadService.fileRequest(`${this.urlUsersImg}${resp.usuarioDB.uid}`, [], this.fileToUpload, 'archivo')
               .then((resp) => {
-                console.log(resp);
+                //console.log(resp);
               })
               .catch((err:any) => {
                 
-                console.log('Error', err);
+                //console.log('Error', err);
               });
             
             Swal.fire({
