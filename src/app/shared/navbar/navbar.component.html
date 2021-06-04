@@ -50,23 +50,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                      <td>Mark</td>
-                      <td>1</td>
-                      <td>$1000</td>
-                      <th><button class="btn btn-outline-danger">Eliminar</button></th>
-                  </tr>
-                  <tr>
-                      <td>Jacob</td>
-                      <td>2</td>
-                      <td>$3000</td>
-                      <th scope="row">2</th>
-                  </tr>
-                  <tr>
-                      <td>Larry</td>
-                      <td>3</td>
-                      <td>$2000</td>
-                      <th scope="row">3</th>
+                  <tr *ngFor="let numPr2 of numPro2; let i = index">
+                      <td>{{ numPr2.nombre }}</td>
+                      <td>{{ cantidad.cantidad }}</td>
+                      <td>{{ numPr2.precio }}</td>
+                      <th><button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button></th>
                   </tr>
                 </tbody>
               </table>
