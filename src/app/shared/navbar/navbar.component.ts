@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   public productoArr : string[] = [];
 
-  public numPro : [] = [];
+  public numPro : number;
 
   nombre: string;
 
@@ -20,9 +20,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Aqui llamamos el servicio que carga lo solicitado
+    this.numPro = this.carritoService.arrProducto.length;
     this.carritoService.getProductos$().subscribe(
       product => {
-        product
+        this.numPro = product;
       }
     );
   }

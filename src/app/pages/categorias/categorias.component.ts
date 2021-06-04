@@ -24,7 +24,7 @@ export class CategoriasComponent implements OnInit {
       .subscribe((data:any) => {
 
         this.categorias = data.categorias;
-        console.log('categorias', this.categorias);
+        //console.log('categorias', this.categorias);
       });
   }
 
@@ -67,7 +67,7 @@ export class CategoriasComponent implements OnInit {
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      console.log(result);
+      //console.log(result);
       if (result.isConfirmed) {
         Swal.fire({
           title: `${result.value.login}'s avatar`,
@@ -82,17 +82,17 @@ export class CategoriasComponent implements OnInit {
     this.categoriasService.getCategorias()
       .subscribe(res => {
         this.categorias = res;
-        console.log(res);
+        //console.log(res);
       });
   }
 
   verCategoria(evento: number) {
-    console.log('este es el evento', evento);
+    //console.log('este es el evento', evento);
   }
 
   crearProducto(){
 
-    console.log('nuevo');
+    //console.log('nuevo');
   }
 
 }

@@ -60,7 +60,7 @@ export class CategoriaTarjetaComponent implements OnInit, AfterViewInit {
         
       })
 
-      console.log(this.slideImg);
+      //console.log(this.slideImg);
     
     })
 

@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class CarritoService {
 
   public arrProducto : string[] = [];
-  private producto$: Subject<any[]>
+  private producto$: Subject<number>
 
   constructor( ) {
 
@@ -17,10 +17,10 @@ export class CarritoService {
   cargarCarrito(id : string){
 
     this.arrProducto.push(id);
-    this.producto$.next(this.arrProducto);
+    this.producto$.next(this.arrProducto.length);
   }
 
-  getProductos$(): Observable<any[]>{
+  getProductos$(): Observable<number>{
     return this.producto$.asObservable();
   }
 
