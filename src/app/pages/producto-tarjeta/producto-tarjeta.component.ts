@@ -39,7 +39,7 @@ export class ProductoTarjetaComponent implements OnInit {
 
     //console.log(this.numProducto);
 
-    this.carritoService.cargarCarrito(producto,this.numProducto).subscribe((carro : object) => {
+    this.carritoService.cargarCarrito(producto,this.numProducto).subscribe((carro : any) => {
       //console.log(carro);
     });
     this.numProducto = 0;

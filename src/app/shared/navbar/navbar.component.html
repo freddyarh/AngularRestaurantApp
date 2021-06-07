@@ -19,7 +19,7 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
         </ul>
-        <button class="mr-3" (click)= "modalCar()" (click)="showModal=true">
+        <button class="mr-3" (click)="showModal=true">
             <i class="bi bi-cart"><span class="badge bg-secondary">{{ numPro }}</span></i>
         </button>
         
@@ -39,7 +39,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" *ngIf="numPro == 0">
+          <span>Lo siento, no has comprado nada</span>
+        </div>
+        <div class="modal-body" *ngIf="numPro != 0">
             <table class="table">
                 <thead>
                   <tr>
@@ -51,17 +54,25 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let numPr2 of numPro2; let i = index">
-                      <td>{{ numPr2.nombre }}</td>
-                      <td>{{ cantidad.cantidad }}</td>
-                      <td>{{ numPr2.precio }}</td>
-                      <th><button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button></th>
+                      <td>{{numPr2.producto}}</td>
+                      <td>{{numPr2.cantidad}}</td>
+                      <td>{{numPr2.precio | currency}}</td>
+                      <th><button class="btn btn-outline-danger" (click)="modalCar(i)"><i class="bi bi-trash"></i></button></th>
                   </tr>
                 </tbody>
+                <thead>
+                  <tr>
+                      <th scope="col-3">Total</th>
+                      <th scope="col-3"></th>
+                      <th scope="col-3">{{ total | currency }}</th>
+                      <th scope="col-3"></th>
+                  </tr>
+                </thead>
               </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="showModal=false">Seguir comprando</button>
-          <button type="button" class="btn btn-primary">Ejecutar la compra</button>
+          <button type="button" class="btn btn-primary" *ngIf="numPro != 0">Ejecutar la compra</button>
         </div>
       </div>
     </div>
