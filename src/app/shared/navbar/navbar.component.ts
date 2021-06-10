@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
   public numPro : number;
   public numPro2 : any;
   public car : Function;
-  public total: number = 0;
+  public valorTotal : number = 0;
+  public total: Array<any> = [];
 
   nombre: string;
 
@@ -27,21 +28,31 @@ export class NavbarComponent implements OnInit {
 
     this.numPro = this.carritoService.arrProducto.length;
     this.numPro2 = this.carritoService.arrProducto;
-    this.numPro = this.numPro2.length;
-        this.numPro2.forEach( resp => {
-          this.total += resp.precio;
-          // console.log(this.total);
-        });
-
+    this.valorTotal = this.totalValor(this.numPro2);
+  
     this.carritoService.getProductos$().subscribe(
       (product : any) => {
-        this.numPro = product.length;
-        product.forEach( resp => {
-          this.total += resp.precio;
-          // console.log(this.total);
-        });
+
+        this.valorTotal = this.totalValor(product);
+        
       }
     );
+  }
+
+  totalValor(arrProducto : Array<any>):number{
+    
+    this.numPro = arrProducto.length;
+    arrProducto.forEach(element => {
+          
+          this.total.push(element.precio);
+          
+        });
+        const total = this.total.slice(this.total.length - arrProducto.length, this.total.length);
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+        if(arrProducto.length > 0){
+          return  total.reduce(reducer);
+        }
   }
 
   modalCar(index){

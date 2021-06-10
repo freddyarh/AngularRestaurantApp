@@ -38,24 +38,31 @@ export class CarritoService {
         if( this.arrProducto.length > 0){
 
           this.result = this.arrProducto.filter((product: any) => product.id == response._id);
-          // console.log(this.arrProducto);
+            // console.log(this.result);
 
           if(this.result.length == 0){
 
             this.arrProducto.push(this.carrito);
             this.producto$.next(this.arrProducto);
+            
+
           }else{
+            
+            const result = this.arrProducto.findIndex((product : any) => product.id == this.result[0].id );
+            
             const [ producto ] = this.result;
-            this.arrProducto.shift();
-            this.carrito = new Carrito(response._id, response.nombre, cantidad + producto.cantidad, response.precio * cantidad );
-            this.arrProducto.push(this.carrito);
+            const nuevaCantidad =  cantidad + producto.cantidad;
+            this.carrito = new Carrito(response._id, response.nombre, nuevaCantidad, response.precio * nuevaCantidad );
+            this.arrProducto.splice(result, 1, this.carrito);
             this.producto$.next(this.arrProducto);
+          
           }
           
         }else{
           
           this.arrProducto.push(this.carrito);
           this.producto$.next(this.arrProducto);
+          
         }
         return this.arrProducto;
       })
