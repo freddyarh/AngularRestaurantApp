@@ -14,7 +14,7 @@ export class UploadService {
 
   fileRequest( url:string, params:Array<string>, files:Array<File>, name:string ){
     
-    return new Promise(( reslve, reject ) => {
+    return new Promise(( resolve, reject ) => {
       let formData = new FormData();
       let xhr = new XMLHttpRequest();
 
@@ -26,7 +26,7 @@ export class UploadService {
       xhr.onreadystatechange = () => {
         if(xhr.readyState == 4){
           if(xhr.status == 200){
-            reslve(JSON.parse(xhr.response));
+            resolve(JSON.parse(xhr.response));
           }else{
             reject(xhr.response);
           }
