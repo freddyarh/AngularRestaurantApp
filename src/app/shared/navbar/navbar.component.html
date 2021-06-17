@@ -6,14 +6,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerRestaurant">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item active" routerLinkActive="active">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/usuarios">Usuarios</a>
+                <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/categorias">Categorias</a>
+                <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -55,7 +55,7 @@
                 <tbody>
                   <tr *ngFor="let numPr2 of numPro2; let i = index">
                       <td>{{numPr2.producto}}</td>
-                      <td>{{numPr2.cantidad}}</td>
+                      <td><button class="btn btn-primary">+</button>{{numPr2.cantidad}}<button class="btn">-</button></td>
                       <td>{{numPr2.precio | currency}}</td>
                       <th><button class="btn btn-outline-danger" (click)="modalCar(i)"><i class="bi bi-trash"></i></button></th>
                   </tr>
@@ -63,7 +63,7 @@
                 <thead>
                   <tr>
                       <th scope="col-3">Total</th>
-                      <th scope="col-3"></th>
+                      <th scope="col-3">{{ numPro }}</th>
                       <th scope="col-3">{{ valorTotal | currency }}</th>
                       <th scope="col-3"></th>
                   </tr>
