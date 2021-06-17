@@ -55,7 +55,7 @@
                 <tbody>
                   <tr *ngFor="let numPr2 of numPro2; let i = index">
                       <td>{{numPr2.producto}}</td>
-                      <td><button class="btn btn-primary">+</button>{{numPr2.cantidad}}<button class="btn">-</button></td>
+                      <td><button class="mr-2" (click)="productCantidad(false, i)" [disabled]="numPr2.cantidad == 1"><i class="bi bi-caret-left"></i></button>{{numPr2.cantidad}}<button class="ml-2" (click)="productCantidad(true, i)"><i class="bi bi-caret-right"></i></button></td>
                       <td>{{numPr2.precio | currency}}</td>
                       <th><button class="btn btn-outline-danger" (click)="modalCar(i)"><i class="bi bi-trash"></i></button></th>
                   </tr>

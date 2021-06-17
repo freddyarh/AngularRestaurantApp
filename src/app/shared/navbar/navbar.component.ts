@@ -28,7 +28,6 @@ export class NavbarComponent implements OnInit {
     //Aqui llamamos el servicio que carga lo solicitado
 
     this.numPro2 = this.carritoService.arrProducto;
-    console.log(this.numPro2);
     this.numPro = this.numPro2.length == 0 ? 0 : this.totalCantidad(this.numPro2);
     this.valorTotal = this.totalValor(this.numPro2);
   
@@ -78,5 +77,18 @@ export class NavbarComponent implements OnInit {
     
     let a = this.carritoService.arrProducto.splice(index, 1);
     this.ngOnInit();
+  }
+
+  productCantidad(valor:boolean, index:number){
+    if(valor){
+      this.numPro2[index].precio += (this.numPro2[index].precio / this.numPro2[index].cantidad);
+      this.numPro2[index].cantidad += 1;
+      this.ngOnInit();
+    }
+    if( !valor){
+      this.numPro2[index].precio -= (this.numPro2[index].precio / this.numPro2[index].cantidad);
+      this.numPro2[index].cantidad -= 1;
+      this.ngOnInit();
+    }
   }
 }
