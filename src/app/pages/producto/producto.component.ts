@@ -45,8 +45,7 @@ export class ProductoComponent implements OnInit {
           this.categoriasArray.push(valor);
 
         });
-        // console.log(this.categoriasArray);
-        // console.log(data);
+        
       });
 
     this.crearFormulario();
@@ -94,6 +93,8 @@ export class ProductoComponent implements OnInit {
       });
     }
 
+    // return;
+
     // Creamos el producto 
 
     const token = this.authService.userToken;
@@ -103,7 +104,7 @@ export class ProductoComponent implements OnInit {
 
       this.uploadService.fileRequest(`${this.urlUsersImg}productos/${data._id}`, [], this.fileToUpload, 'archivo')
         .then((resp) => {
-          console.log(resp);
+          console.log('respuesta', resp);
           this.forma.reset();
           this.imgURL = null;
           Swal.fire({
@@ -116,7 +117,7 @@ export class ProductoComponent implements OnInit {
         })
         .catch((err:any) => {
           
-          console.log('Error', err);
+          console.log('El Error', err);
         });
       
     });
