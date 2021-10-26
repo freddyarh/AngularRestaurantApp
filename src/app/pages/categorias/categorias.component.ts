@@ -67,10 +67,11 @@ export class CategoriasComponent implements OnInit {
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      //console.log(result);
+      console.log(result);
       if (result.isConfirmed) {
         Swal.fire({
-          title: `${result.value.login}'s avatar`,
+          icon:'success',
+          title: `Se a creado la categoria ${result.value}`,
           imageUrl: result.value.avatar_url
         })
       }
