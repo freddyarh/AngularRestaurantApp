@@ -37,7 +37,7 @@ export class CategoriasComponent implements OnInit {
         autocapitalize: 'off'
       },
       showCancelButton: true,
-      confirmButtonText: 'Save',
+      confirmButtonText: 'Guardar',
       showLoaderOnConfirm: true,
       preConfirm: (login) => {
         
