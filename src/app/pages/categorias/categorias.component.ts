@@ -67,7 +67,7 @@ export class CategoriasComponent implements OnInit {
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      console.log(result);
+      // console.log(result);
       if (result.isConfirmed) {
         Swal.fire({
           icon:'success',
