@@ -3,6 +3,10 @@
 
   <h2>Productos <small>{{ categoria }}</small></h2>
 
+  <div *ngIf="productos.length === 0">
+    Lo sentimos, no hay productos
+  </div>
+
   <div class="card-columns">
   
     <!-- *ngFor="let heroe of heroes; let i = index" -->
