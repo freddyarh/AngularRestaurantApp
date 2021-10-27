@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit {
         .subscribe((data: any) => { 
           this.categoria = data.categoria[0].nombre;
           this.productos = data.productos;
-          // console.log(this.productos)
+          console.log(this.productos)
         })
   }
 
