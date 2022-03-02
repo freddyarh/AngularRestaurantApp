@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+// import { MatSliderModule } from '@angular/material/slider';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,7 @@ import { PruebaComponent } from './models/prueba/prueba.component';
     PruebaComponent
   ],
   imports: [
+    // MatSliderModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

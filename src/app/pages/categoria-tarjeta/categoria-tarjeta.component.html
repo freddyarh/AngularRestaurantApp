@@ -27,7 +27,7 @@
 
   <div class="card-body">
     <h4 class="card-title">{{ categoria.nombre }}</h4>
-    <p class="card-text"> Descripcion de categoria </p>
+    <p class="card-text"> {{ categoria.descripcion }} </p>
     <p class="card-text"><small class="text-muted">Clasificacion</small></p>
 
     <button [routerLink]="['/productos', categoria._id]"

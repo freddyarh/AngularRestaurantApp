@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { AuthService } from 'src/app/services/auth.service';
 
-
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import Swiper from 'swiper';
 
@@ -24,7 +23,6 @@ export class CategoriasComponent implements OnInit {
       .subscribe((data:any) => {
 
         this.categorias = data.categorias;
-        //console.log('categorias', this.categorias);
       });
   }
 
@@ -33,6 +31,7 @@ export class CategoriasComponent implements OnInit {
     Swal.fire({
       title: 'Nombre de la categoria',
       input: 'text',
+      input2: 'text',
       inputAttributes: {
         autocapitalize: 'off'
       },
@@ -42,15 +41,16 @@ export class CategoriasComponent implements OnInit {
       preConfirm: (login) => {
         
         const objCategoria = {
-          nombre: login
+          nombre: login,
+          descripcion: 'Platos deliciosos provenientes del mar'
         }
         // console.log(leter);
         const token = this.authService.userToken;
 
         this.categoriasService.setCategoria(objCategoria, token )
-            .subscribe(data => {
-              this.ngOnInit();
-            });
+          .subscribe(data => {
+            this.ngOnInit();
+        });
 
         // // return fetch(`//api.github.com/users/${login}`)
         //   .then(response => {
@@ -67,7 +67,7 @@ export class CategoriasComponent implements OnInit {
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      // console.log(result);
+      
       if (result.isConfirmed) {
         Swal.fire({
           icon:'success',
