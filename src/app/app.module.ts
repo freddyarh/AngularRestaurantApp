@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-// import { MatSliderModule } from '@angular/material/slider';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,8 +44,10 @@ import { PruebaComponent } from './models/prueba/prueba.component';
     PruebaComponent
   ],
   imports: [
-    // MatSliderModule,
+    BrowserAnimationsModule,
     BrowserModule,
+    MatButtonModule, 
+    NoopAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
