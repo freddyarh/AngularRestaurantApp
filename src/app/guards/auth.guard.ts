@@ -8,14 +8,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuard {
 
-  constructor( private auth: AuthService, private router: Router ) {}
+  constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(): boolean {
 
     // console.log('Guard');
-    // console.log(this.auth.estaAutenticado());
+    console.log(this.auth.estaAutenticado());
 
-    if ( this.auth.estaAutenticado() ) {
+    if (this.auth.estaAutenticado()) {
 
       return true;
 
