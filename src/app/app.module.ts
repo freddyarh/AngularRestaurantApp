@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authReducer } from './reducer/auth';
+import { uiReducer } from './reducer/ui';
+// import { appReducers } from './app.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,7 +60,8 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     HttpClientModule,
     JwtModule,
-    StoreModule.forRoot({ auth: authReducer }),
+    // StoreModule.forRoot(appReducers),
+    StoreModule.forRoot({ auth: authReducer, ui: uiReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
