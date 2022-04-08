@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
 
       }, (err) => {
         // console.log(err);
-
         Swal.fire({
           icon: 'error',
           title: 'Error de autenticacion',

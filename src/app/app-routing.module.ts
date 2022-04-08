@@ -13,20 +13,20 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard ] }, // , canActivate: [ AuthGuard ]
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }, // , canActivate: [ AuthGuard ]
   { path: 'registro', component: RegistroComponent },
-  { path: 'login'   , component: LoginComponent },
-  { path: 'usuarios'   , component: UsuariosComponent },
-  { path: 'usuario'   , component: UsuarioComponent },
-  { path: 'usuario/:id'   , component: UsuarioComponent },
-  { path: 'categorias'   , component: CategoriasComponent },
-  { path: 'producto'   , component: ProductoComponent },
-  { path: 'productos/:id'   , component: ProductosComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
+  { path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/:id', component: UsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'categorias', component: CategoriasComponent, canActivate: [AuthGuard] },
+  { path: 'producto', component: ProductoComponent, canActivate: [AuthGuard] },
+  { path: 'productos/:id', component: ProductosComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'registro' }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

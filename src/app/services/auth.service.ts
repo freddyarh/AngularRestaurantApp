@@ -23,8 +23,8 @@ export class AuthService {
   // Login 
   // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
-  constructor( private http:HttpClient ) { 
-     this.leerToken();
+  constructor(private http: HttpClient) {
+    this.leerToken();
   }
 
   logout() {
@@ -32,138 +32,77 @@ export class AuthService {
     localStorage.removeItem('nombre');
   }
 
-  
-  login( usuario: UsuarioModel ){
+
+  login(usuario: UsuarioModel) {
 
     const params = JSON.stringify(usuario);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(this.url + 'login', params, {headers})
-    .pipe(
-      map( resp => {
-        // console.log('Entro en el mapa de RXJS');
-        // console.log(resp['token'].length);
-        this.guardarToken( resp['token'] );
-
-
-        // const helper = new JwtHelperService();
-        // const decodedToken = helper.decodeToken(resp['token']);
-        // console.log('Esta es la descodificacion');
-        // console.log(decodedToken);
-        
-        return resp;
-      })
-    );
-    
-  //   const authData = {
-  //     ...usuario,
-  //     returnSecureToken: true
-  //   };
-
-  //   return this.http.post(
-  //     `${ this.url }signInWithPassword?key=${ this.apikey}`,
-  //     authData
-  //   ).pipe(
-  //     map( resp => {
-  //       console.log('Entro en el mapa de RXJS');
-  //       this.guardarToken( resp['idToken']);
-  //       return resp;
-  //     })
-  //   );
-
-  }
-
-  nuevoUsuario( usuario: UsuarioModel ): Observable<any> {
-
-    const params = JSON.stringify(usuario);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-    return this.http.post(this.url + 'usuario', params, {headers})
-    .pipe(
-        map( resp => {
-          
-          this.guardarToken( resp['token'] );
-
-          const helper = new JwtHelperService();
-          const decodedToken = helper.decodeToken(resp['token']);
-          // console.log('Esta es la descodificacion');
-          // console.log(decodedToken);
-          
+    return this.http.post(this.url + 'login', params, { headers })
+      .pipe(
+        map(resp => {
+          // console.log('Entro en el mapa de RXJS');
+          // console.log(resp['token'].length);
+          this.guardarToken(resp['token']);
           return resp;
         })
       );
-
-    // const authData = {
-    //   ...usuario,
-    //   returnSecureToken: true
-    // };
-
-    // return this.http.post(
-    //   `${ this.url }signUp?key=${ this.apikey}`,
-    //   authData
-    // ).pipe(
-    //   map( resp => {
-    //     console.log('Entro en el mapa de RXJS');
-    //     this.guardarToken( resp['idToken']);
-    //     return resp;
-    //   })
-    // );
-
   }
 
-   private guardarToken( idToken: string ) {
+  nuevoUsuario(usuario: UsuarioModel): Observable<any> {
+
+    const params = JSON.stringify(usuario);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.post(this.url + 'usuario', params, { headers })
+      .pipe(
+        map(resp => {
+
+          this.guardarToken(resp['token']);
+
+          const helper = new JwtHelperService();
+          const decodedToken = helper.decodeToken(resp['token']);
+
+          return resp;
+        })
+      );
+  }
+
+  private guardarToken(idToken: string) {
 
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
 
     let hoy = new Date();
-    hoy.setSeconds ( 3600 );
+    hoy.setSeconds(3600);
 
-    localStorage.setItem('expira', hoy.getTime().toString() );
+    localStorage.setItem('Expira', hoy.getTime().toString());
 
   }
 
   leerToken() {
-    if ( localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
     } else {
       this.userToken = '';
     }
-
     return this.userToken;
   }
 
   estaAutenticado(): boolean {
 
-    if (this.userToken.length < 2 ) {
-      // console.log(this.userToken.length);
+    if (localStorage.getItem('token') === null) {
       return false;
+    } else {
+      return true;
     }
-    return true;
-
-    // const expira = Number(
-    //   .getItem('expira'));
-    // const expiraDate = new Date();
-    // expiraDate.setTime(expira);
-
-    // if (expiraDate > new Date()) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-    // return this.userToken.length > 2;
   }
 
   getUsuarios() {
-    // const params = JSON.stringify(usuario);
-    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http.get(this.url + 'usuario?desde=0&limite=5')
-    .pipe(
-        map( resp => {
-          // console.log('Entro en el mapa de RXJS');
-          // console.log(resp.token );
-          
+      .pipe(
+        map(resp => {
           return resp;
         })
       );
