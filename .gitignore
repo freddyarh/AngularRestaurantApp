@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+
+# images
+**/assets/images/background_img/*.jpg
+
 # Only exists if Bazel was run
 /bazel-out
 

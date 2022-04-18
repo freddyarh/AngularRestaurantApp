@@ -12,10 +12,6 @@ export class AuthGuard {
 
   canActivate(): boolean {
 
-    // console.log('Guard');
-    // console.log(this.auth.estaAutenticado());
-    // console.log(localStorage.getItem('token') === null);
-
     if (this.auth.estaAutenticado()) {
 
       return true;

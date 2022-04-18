@@ -1,6 +1,11 @@
 import { createAction, props } from '@ngrx/store';
+import { UserSignIn } from '../models/userSignIn';
 
-export const startLoginEmailPassword = createAction(
+export const login = createAction(
     '[Start Login] login',
-    props<{ id: string, name: string }>()
+    props<{ user: UserSignIn }>()
+);
+
+export const logout = createAction(
+    '[Start Login] logout'
 );
