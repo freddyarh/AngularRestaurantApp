@@ -1,36 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+<nav class="navbar navbar-expand-lg navbar-dark mb-2 bg-light">
     
-    <a class="navbar-brand" >Test</a>
+    <a class="navbar-brand" >Simplify Store</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerRestaurant" aria-controls="navbarTogglerRestaurant" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerRestaurant">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active" routerLinkActive="active">
-                <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-dark" routerLink="/home" routerLinkActive="active">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+                <a class="nav-link text-dark" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link text-dark" routerLink="/categorias" routerLinkActive="active">Categorias</a>
             </li>
         </ul>
         <button class="mr-3" (click)="showModal=true">
             <i class="bi bi-cart"><span class="badge bg-secondary">{{ numPro }}</span></i>
         </button>
         
-        <span class="navbar-text">
+        <span class="navbar-text text-dark">
             Welcome {{ nombre }}
         </span>
     </div>
 </nav>
 
 <!-- Modal -->
-  <div class="modal fade" [ngClass]="{'show':showModal}" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal fade" [ngClass]="{'show':showModal}" style="backdrop-filter: blur(5px)" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
